@@ -1,0 +1,48 @@
+#! /usr/bin/bash
+
+# FUNCTIONS
+function help {
+    echo "help"
+}
+
+# CHECK FLAGS
+while getopts :n:h: FLAGS;
+do
+    case $FLAGS in
+        n)
+            NAME=$OPTARG
+            ;;
+        h)
+            help
+            exit 1
+            ;;
+    esac
+done
+
+
+if [[ "$NAME" != "" ]]
+then 
+    cd ~/Projects
+    git clone https://github.com/joegoggin/solito-tRPC-template.git
+    mv solito-tRPC-template $NAME
+    cd $NAME
+    rm -rf .git
+    git init
+    cd ./packages/db
+    echo "DATABASE_URL=\"postgresql://postgres:**Password**@localhost:5432/**DB**\"" >> .env
+    cd ../app
+    echo "import { Platform } from \"react-native\";" >> app.ts
+    echo "" >> app.ts
+    echo "const tunnel = \"**tunnel**\";" >> app.ts
+    echo "" >> app.ts
+    echo "export const API = Platform.OS === \"web\" ? \"http://localhost:3000/api/trpc\" : \`\${tunnel}/api/trpc\`;" >> app.ts
+    cd ../server
+    echo "export const JWT_SECRET = \"**secret**\";" >> app.ts
+    yarn
+    echo ""
+    echo "$NAME was successfully created!"
+else
+    help
+    exit 1
+fi
+
