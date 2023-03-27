@@ -31,13 +31,13 @@ then
     cd ./packages/db
     echo "DATABASE_URL=\"postgresql://postgres:**Password**@localhost:5432/**DB**\"" >> .env
     cd ../app
-    echo "import { Platform } from \"react-native\";" >> app.ts
+    echo "import { Platform } from \"react-native\";" >> env.ts
     echo "" >> app.ts
-    echo "const tunnel = \"**tunnel**\";" >> app.ts
+    echo "const tunnel = \"**tunnel**\";" >> env.ts
     echo "" >> app.ts
-    echo "export const API = Platform.OS === \"web\" ? \"http://localhost:3000/api/trpc\" : \`\${tunnel}/api/trpc\`;" >> app.ts
+    echo "export const API = Platform.OS === \"web\" ? \"http://localhost:3000/api/trpc\" : \`\${tunnel}/api/trpc\`;" >> env.ts
     cd ../server
-    echo "export const JWT_SECRET = \"**secret**\";" >> app.ts
+    echo "export const JWT_SECRET = \"**secret**\";" >> env.ts
     yarn
     echo ""
     echo "$NAME was successfully created!"
