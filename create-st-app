@@ -32,9 +32,9 @@ then
     echo "DATABASE_URL=\"postgresql://postgres:**Password**@localhost:5432/**DB**\"" >> .env
     cd ../app
     echo "import { Platform } from \"react-native\";" >> env.ts
-    echo "" >> app.ts
+    echo "" >> env.ts
     echo "const tunnel = \"**tunnel**\";" >> env.ts
-    echo "" >> app.ts
+    echo "" >> env.ts
     echo "export const API = Platform.OS === \"web\" ? \"http://localhost:3000/api/trpc\" : \`\${tunnel}/api/trpc\`;" >> env.ts
     cd ../server
     echo "export const JWT_SECRET = \"**secret**\";" >> env.ts
