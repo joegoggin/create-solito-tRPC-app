@@ -23,7 +23,7 @@ Make sure to replace `/path/to/create-solito-tRPC-app` with the actual path to t
 ## Usage
 
 ```
-create-st-app -n <name> -p <path>
+$ create-st-app -n <name> -p <path>
 ```
 
 ## Options
