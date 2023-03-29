@@ -1,6 +1,6 @@
 # create-solito-tRPC-app
 
-A command-line tool for creating new projects using my solito-.
+A command-line tool for creating new projects using my [solito-tRPC-template](https://github.com/joegoggin/solito-tRPC-template).
 
 ## Installation
 
