@@ -1,12 +1,14 @@
 #! /usr/bin/bash
 
 # VARIABLES
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 SECRET=$(openssl rand -base64 32)
 DEFAULT_DIR=~/Projects
 
 # FUNCTIONS
 function help {
-    echo "help"
+    cd $SCRIPT_DIR
+    cat help.txt
 }
 
 # CHECK FLAGS
@@ -66,7 +68,8 @@ then
     echo ""
     echo "$PROJECT_NAME was successfully created!"
 else
-    help
+    cd $SCRIPT_DIR
+    cat error.txt
     exit 1
 fi
 
