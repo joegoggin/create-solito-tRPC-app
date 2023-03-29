@@ -12,7 +12,7 @@ function help {
 }
 
 # CHECK FLAGS
-while getopts :n:h:p: FLAGS;
+while getopts :n:p:h FLAGS;
 do
     case $FLAGS in
         n)
@@ -25,6 +25,10 @@ do
             help
             exit 1
             ;;
+        ?)
+            echo ""
+            echo "-$OPTARG is not an option."
+            help
     esac
 done
 
@@ -67,6 +71,7 @@ then
     yarn
     echo ""
     echo "$PROJECT_NAME was successfully created!"
+    echo ""
 else
     cd $SCRIPT_DIR
     cat error.txt
